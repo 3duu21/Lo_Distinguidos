@@ -1,0 +1,11 @@
+
+.map {
+    height: 50vh; /* Altura de toda la ventana */
+    width: 100%;   /* Ancho completo */
+    margin-top: 100px;
+}
+
+.map h1{
+    margin-bottom: 20px;
+    font-weight: 600;
+}
