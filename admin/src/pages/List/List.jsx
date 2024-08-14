@@ -39,6 +39,7 @@ function List({url}) {
           <b>Nombre</b>
           <b>Categoria</b>
           <b>Precio</b>
+          <b>Tamaño</b>
           <b>Acción</b>
         </div>
         {list.map((item, index) => {
@@ -48,6 +49,7 @@ function List({url}) {
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>${item.price}</p>
+              <p>{item.size}</p>
               <p onClick={()=>removeFood(item._id)} className='cursor'>X</p>
             </div>
           )

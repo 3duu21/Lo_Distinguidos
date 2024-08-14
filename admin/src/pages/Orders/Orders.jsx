@@ -14,7 +14,6 @@ function Orders({ url }) {
 
     if (response.data.success) {
       setOrders(response.data.data)
-      console.log(response.data.data);
 
     } else {
       toast.error("Error")
@@ -47,10 +46,10 @@ function Orders({ url }) {
               <p className="order-item-food">
                 {order.items.map((item, index) => {
                   if (index === order.items.lenght - 1) {
-                    return item.name + " x " + item.quantity
+                    return item.name + " (" + item.size + ")" + " x " + item.quantity
                   }
                   else {
-                    return item.name + " x " + item.quantity + ", "
+                    return item.name + " (" + item.size + ")" + " x " + item.quantity + " / "
                   }
                 })}
               </p>

@@ -14,3 +14,41 @@
     gap: 30px;
     row-gap: 50px;
 }
+
+.filter {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.filter p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #555;
+    margin-right: 10px;
+}
+
+.filter select {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    max-width: 120px;
+    margin-top: 20px;
+}
+
+.filter select:hover {
+    border-color: #aaa;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.filter select:focus {
+    outline: none;
+    border-color: #8d8c8c;
+    box-shadow: 0 0 5px rgba(44, 43, 43, 0.5);
+}

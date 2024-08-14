@@ -4,14 +4,16 @@ import { assets } from '../../assets/assets'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-function Add({url}) {
+function Add({ url }) {
 
     const [image, setImage] = useState(false)
     const [data, setData] = useState({
         name: "",
         description: "",
         price: "",
-        category: "Salad"
+        category: "Burger Distinguidas",
+        size: "Simple"
+
     })
 
     const onChangeHandler = (event) => {
@@ -27,6 +29,7 @@ function Add({url}) {
         formData.append("description", data.description)
         formData.append("price", Number(data.price))
         formData.append("category", data.category)
+        formData.append("size", data.size)
         formData.append("image", image)
         const response = await axios.post(`${url}/api/food/add`, formData)
         if (response.data.success) {
@@ -34,11 +37,12 @@ function Add({url}) {
                 name: "",
                 description: "",
                 price: "",
-                category: "Salad"
+                category: "Burger Distinguidas",
+                size: "Simple"
             })
             setImage(false)
             toast.success(response.data.message)
-        }else{
+        } else {
             toast.error(response.data.message)
         }
 
@@ -66,20 +70,30 @@ function Add({url}) {
                     <div className="add-category flex-col">
                         <p>Categoria del producto</p>
                         <select onChange={onChangeHandler} name="category" required>
-                            <option value="Salad">Salad</option>
-                            <option value="Rolls">Rolls</option>
-                            <option value="Desert">Desert</option>
-                            <option value="Sandwich">Sandwich</option>
-                            <option value="Cake">Cake</option>
-                            <option value="Pure Veg">Pure Veg</option>
-                            <option value="Pasta">Pasta</option>
-                            <option value="Noodles">Noodles</option>
+                            <option value="Burger Distinguidas">Burger Distinguidas</option>
+                            <option value="Churrascos 2 X 9.990">Churrascos 2 X 9.990</option>
+                            <option value="Completo">Completo</option>
+                            <option value="Ass">Ass</option>
+                            <option value="Churrasco">Churrasco</option>
+                            <option value="Lomito">Lomito</option>
+                            <option value="Pollo">Pollo</option>
+                            <option value="Bebestibles">Bebestibles</option>
                         </select>
                     </div>
-                    <div className="add-price flex-col">
-                        <p>Precio del producto</p>
-                        <input onChange={onChangeHandler} value={data.price} type="number" required name="price" placeholder='$20' />
+                    <div className="add-category flex-col">
+                        <p>Tamaño del producto</p>
+                        <select onChange={onChangeHandler} name="size" required>
+                            <option value="Normal">Normal</option>
+                            <option value="Simple">Simple</option>
+                            <option value="Doble">Doble</option>
+                            <option value="Triple">Triple</option>
+                            <option value="XL">XL</option>
+                        </select>
                     </div>
+                </div>
+                <div className="add-price">
+                    <p>Precio del producto</p>
+                    <input onChange={onChangeHandler} value={data.price} type="number" required name="price" placeholder='$20' />
                 </div>
                 <button type='submit' className='add-btn'>Agregar</button>
             </form>

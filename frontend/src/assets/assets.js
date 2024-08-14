@@ -93,23 +93,23 @@ export const menu_list = [
         menu_image: menu_2
     },
     {
-        menu_name: "Completos XL",
+        menu_name: "Completo",
         menu_image: menu_3
     },
     {
-        menu_name: "Ass XL",
+        menu_name: "Ass",
         menu_image: menu_4
     },
     {
-        menu_name: "Churrasco XL",
+        menu_name: "Churrasco",
         menu_image: menu_5
     },
     {
-        menu_name: "Lomito XL",
+        menu_name: "Lomito",
         menu_image: menu_6
     },
     {
-        menu_name: "Pollo XL",
+        menu_name: "Pollo",
         menu_image: menu_7
     },
     {

@@ -29,7 +29,7 @@
 }
 
 .add-category-price select, .add-category-price input{
-    max-width: 120px;
+    max-width: 160px;
     padding: 10px;
 }
 
@@ -40,4 +40,9 @@
     background-color: black;
     color: white;
     cursor: pointer;
+}
+
+.add-price input{
+    max-width: 120px;
+    padding: 10px;
 }

@@ -12,12 +12,16 @@ function Sidebar() {
           <p>Agregar Producto</p>
         </NavLink>
         <NavLink to='/list' className="sidebar-option">
-          <img src={assets.order_icon} alt="" />
+          <img src={assets.clipboard} alt="" />
           <p>Productos</p>
         </NavLink>
         <NavLink to='/orders' className="sidebar-option">
           <img src={assets.order_icon} alt="" />
           <p>Pedidos</p>
+        </NavLink>
+        <NavLink to='/orderManual' className="sidebar-option">
+          <img src={assets.order_delivery} alt="" />
+          <p>Pedido Manual</p>
         </NavLink>
       </div>
     </div>
