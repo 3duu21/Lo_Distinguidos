@@ -30,7 +30,7 @@
     font-size: 1vw;
 }
 
-.header-contents button{
+.header-contents a{
     border: none;
     color: rgb(88, 87, 87);
     font-weight: 500;
@@ -57,7 +57,7 @@
         display: none;
     }
 
-    .header-contents button{
+    .header-contents a{
         padding: 2vw 4vw;
     }
 }

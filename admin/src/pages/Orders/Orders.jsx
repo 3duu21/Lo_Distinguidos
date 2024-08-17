@@ -63,8 +63,10 @@ function Orders({ url }) {
             <p>${order.amount}</p>
             <select onChange={(event) => statusHandler(event, order._id)} value={order.status}>
               <option value="Procesando pedido">Procesando pedido</option>
-              <option value="Entrega local">Entrega local</option>
-              <option value="Entrega delivery">Entrega delivery</option>
+              <option value="Haciendo pedido">Haciendo pedido</option>
+              <option value="Pedido listo">Pedido listo</option>
+              <option value="Entregado local">Entregado local</option>
+              <option value="Entregado delivery">Entregado delivery</option>
             </select>
           </div>
         ))}

@@ -22,22 +22,22 @@ const placeOrder = async (req, res) => {
 
         const line_items = req.body.items.map((item) => ({
             price_data: {
-                currency: "usd",
+                currency: "clp",
                 product_data: {
                     name: item.name
                 },
-                unit_amount: item.price * 100 * 80
+                unit_amount: item.price
             },
             quantity: item.quantity
         }))
 
         line_items.push({
             price_data: {
-                currency: "usd",
+                currency: "clp",
                 product_data: {
                     name: "Gastos de envío"
                 },
-                unit_amount: 2 * 100 * 80
+                unit_amount: 3000
             },
             quantity: 1
         })
@@ -111,4 +111,25 @@ const updateStatus = async (req, res) => {
     }
 }
 
-export { placeOrder, verifyOrder, userOrders, listOrders, updateStatus }
+// Insertar orden manualmente desde el panel de administración
+const insertManualOrder = async (req, res) => {
+    try {
+        // Crear una nueva orden con los datos recibidos
+        const newOrder = new orderModel({
+            items: req.body.items,
+            amount: req.body.amount,
+            address: req.body.address, // Opcional, si no es necesario puedes eliminarlo
+        });
+
+        // Guardar la orden en la base de datos
+        await newOrder.save();
+
+        // Responder con éxito y la nueva orden creada
+        res.json({ success: true, order: newOrder });
+    } catch (error) {
+        console.error(error);
+        res.json({ success: false, message: "Error al guardar la orden" });
+    }
+};
+
+export { placeOrder, verifyOrder, userOrders, listOrders, updateStatus, insertManualOrder }
