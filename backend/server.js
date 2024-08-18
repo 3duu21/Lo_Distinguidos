@@ -1,3 +1,13 @@
+import path from 'path';
+import express from "express";
+import cors from "cors";
+import { connectDB } from "./config/db.js";
+import foodRouter from "./routes/foodRoute.js";
+import userRouter from "./routes/userRoute.js";
+import cartRouter from "./routes/cartRoute.js";
+import orderRouter from "./routes/orderRoute.js";
+import 'dotenv/config';
+
 const app = express();
 const port = process.env.PORT || 4000;
 
@@ -16,15 +26,15 @@ app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
 
 // Servir el frontend principal
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.use(express.static(path.join(process.cwd(), 'frontend/build')));
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+    res.sendFile(path.join(process.cwd(), 'frontend/build', 'index.html'));
 });
 
 // Servir el frontend de administración
-app.use('/admin', express.static(path.join(__dirname, '../admin/build')));
+app.use('/admin', express.static(path.join(process.cwd(), 'admin/build')));
 app.get('/admin/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../admin/build', 'index.html'));
+    res.sendFile(path.join(process.cwd(), 'admin/build', 'index.html'));
 });
 
 // Test endpoint
