@@ -26,15 +26,15 @@ app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
 
 // Servir el frontend principal
-app.use(express.static(path.join(process.cwd(), 'frontend/dist')));
+app.use(express.static(path.join(process.cwd(), '../frontend/dist')));
 app.get('/', (req, res) => {
-    res.sendFile(path.join(process.cwd(), 'frontend/dist', 'index.html'));
+    res.sendFile(path.join(process.cwd(), '../frontend/dist', 'index.html'));
 });
 
 // Servir el frontend de administración
-app.use('/admin', express.static(path.join(process.cwd(), 'admin/dist')));
+app.use('/admin', express.static(path.join(process.cwd(), '../admin/dist')));
 app.get('/admin/*', (req, res) => {
-    res.sendFile(path.join(process.cwd(), 'admin/dist', 'index.html'));
+    res.sendFile(path.join(process.cwd(), '../admin/dist', 'index.html'));
 });
 
 // Test endpoint
