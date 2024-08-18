@@ -1,35 +1,37 @@
-import express, { response } from "express"
-import cors from "cors"
-import { connectDB } from "./config/db.js"
-import foodRouter from "./routes/foodRoute.js"
-import userRouter from "./routes/userRoute.js"
-import 'dotenv/config'
-import cartRouter from "./routes/cartRoute.js"
-import orderRouter from "./routes/orderRoute.js"
+const app = express();
+const port = process.env.PORT || 4000;
 
+// Middleware
+app.use(express.json());
+app.use(cors());
 
-//app config
-const app = express()
-const port = 4000
+// DB Connection
+connectDB();
 
-//middleware
-app.use(express.json())
-app.use(cors())
+// API Endpoints
+app.use("/api/food", foodRouter);
+app.use("/images", express.static('uploads'));
+app.use("/api/user", userRouter);
+app.use("/api/cart", cartRouter);
+app.use("/api/order", orderRouter);
 
-//db connection
-connectDB()
+// Servir el frontend principal
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+});
 
-//Api endpoint
-app.use("/api/food", foodRouter)
-app.use("/images", express.static('uploads'))
-app.use("/api/user", userRouter)
-app.use("/api/cart", cartRouter)
-app.use("/api/order", orderRouter)
+// Servir el frontend de administración
+app.use('/admin', express.static(path.join(__dirname, '../admin/build')));
+app.get('/admin/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../admin/build', 'index.html'));
+});
 
+// Test endpoint
 app.get("/", (req, res) => {
-    res.send("Api Working")
-})
+    res.send("API Working");
+});
 
-app.listen(port, ()=>{
-    console.log(`Server Started on http://localhost:${port}`)
-})
+app.listen(port, () => {
+    console.log(`Server started on http://localhost:${port}`);
+});
