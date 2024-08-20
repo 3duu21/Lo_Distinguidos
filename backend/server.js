@@ -32,9 +32,9 @@ app.get('/', (req, res) => {
 });
 
 // Servir el frontend de administración
-app.use('/admin', express.static(path.join(process.cwd(), '../admin/dist')));
+app.use('/admin', express.static(path.resolve('../admin/dist')));
 app.get('/admin/*', (req, res) => {
-    res.sendFile(path.join(process.cwd(), '../admin/dist', 'index.html'));
+    res.sendFile(path.resolve('../admin/dist', 'index.html'));
 });
 
 // Test endpoint

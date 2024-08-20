@@ -18,4 +18,4 @@ export const assets ={
     clipboard
 }
 
-export const url = 'http://localhost:4000'
+export const url = 'https://lo-distinguidos.onrender.com'
