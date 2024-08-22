@@ -7,7 +7,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 //placing user order for front\
 const placeOrder = async (req, res) => {
 
-    const fronted_url = 'http://localhost:5173'
+    const fronted_url = 'https://lo-distinguidos.onrender.com'
 
     try {
         const newOrder = new orderModel({
