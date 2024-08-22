@@ -23,7 +23,6 @@ function Verify() {
             navigate("/")
         }
     } catch (error) {
-        console.error("Error verifying payment:", error.response || error.message);
         navigate("/")  // O redirigir a una página de error específica
     }
 }
