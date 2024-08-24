@@ -15,22 +15,18 @@ function Verify() {
     const { url } = useContext(StoreContext)
 
     const verifyPayment = async () => {
-    try {
         const response = await axios.post(url + "/api/order/verify", { success, orderId })
         if (response.data.success) {
             navigate("/myorders")
         } else {
             navigate("/")
         }
-    } catch (error) {
-        navigate("/")  // O redirigir a una página de error específica
     }
-}
-
 
     useEffect(()=>{
         verifyPayment()
     },[])
+
 
     return (
         <div className='verify'>
