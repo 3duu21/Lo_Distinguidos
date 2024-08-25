@@ -14,6 +14,8 @@ function Verify() {
 
     const { url } = useContext(StoreContext)
 
+    console.log(url); 
+
     const verifyPayment = async () => {
     console.log(url + "/api/order/verify"); // Para depurar la URL
     try {
